@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/trunk_mpc.dir/trunk_mpc.cpp.o  -o trunk_mpc  -Wl,-rpath,/usr/local/lib -ltowr /usr/local/lib/libifopt_ipopt.so /usr/local/lib/liblcm.so.1.5.0 /usr/local/lib/libifopt_core.so 

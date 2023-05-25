@@ -1,10 +1,12 @@
 from pydrake.all import (getDrakePath, DiagramBuilder, SceneGraph, FindResourceOrThrow,
                          MultibodyPlant, Parser, RigidTransform, CoulombFriction, Box,
-                        GeometryFrame, GeometryInstance, MakePhongIllustrationProperties, Sphere,
-                        LogVectorOutput,StartMeshcat, MeshcatVisualizer, MeshcatVisualizerParams,plot_system_graphviz,
-                        Simulator, Diagram)
+                         GeometryFrame, GeometryInstance, MakePhongIllustrationProperties, Sphere,
+                         LogVectorOutput, StartMeshcat, MeshcatVisualizer, MeshcatVisualizerParams,
+                         plot_system_graphviz,
+                         Simulator, Diagram)
 
 import numpy as np
+
 
 class Quad_Station(Diagram):
     scene_graph: SceneGraph
@@ -23,6 +25,7 @@ class Quad_Station(Diagram):
 
     def AddDog(self, model_urdf):
         self.quad = self.parser.AddModelFromFile(model_urdf, 'quad')
+
     def AddGround(self):
         surface_friction = CoulombFriction(
             static_friction=1.0,
@@ -66,6 +69,7 @@ class Quad_Station(Diagram):
             foot_geometry.set_illustration_properties(MakePhongIllustrationProperties(trunk_color))
             self.scene_graph.RegisterGeometry(self.trunk_source, foot_frame.id(), foot_geometry)
             self.trunk_frame_ids[foot] = foot_frame.id()
+
     def ConnectToMeshcatVisualizer(self):
         self.meshcat = StartMeshcat()
         self.visualizer = MeshcatVisualizer.AddToBuilder(
